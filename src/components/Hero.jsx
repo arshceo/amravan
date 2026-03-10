@@ -7,13 +7,23 @@ export default function Hero() {
   return (
     <section className="hero" id="hero">
       {/* Background */}
-      <div className="hero-bg">
-        <Image
-          src="/images/hero-bg-4k.jpg"
-          alt="Lush green botanical background"
-          fill
-          style={{ objectFit: 'cover' }}
-          priority
+      <div className="hero-bg" style={{ overflow: 'hidden' }}>
+        <video
+          src="/images/bg.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            transform: 'scale(1.05)', /* Slightly larger to hide blur bleeding on edges and watermark */
+            filter: 'blur(5px)'
+          }}
         />
         <div className="hero-bg-overlay" />
       </div>
