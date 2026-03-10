@@ -361,12 +361,14 @@ ul, ol {
   grid-template-columns: 1.2fr 1fr;
   align-items: center;
   gap: var(--space-3xl);
-  padding: 140px 0 80px;
+  padding-top: 140px;
+  padding-bottom: 80px;
 }
 
 .hero-text {
   max-width: 800px;
   margin-top: -40px; /* Precise 40px shift up on PC */
+  justify-self: start;
 }
 
 .hero-text h1 {
