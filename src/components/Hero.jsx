@@ -10,6 +10,7 @@ export default function Hero() {
       <div className="hero-bg" style={{ overflow: 'hidden' }}>
         <video
           src="/images/bg.mp4"
+          poster="/images/hero-bg-4k.jpg"
           autoPlay
           loop
           muted
@@ -37,9 +38,7 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <h1>
-            The Power <span className="light-text">of</span><br />
-            Nature <span className="light-text">in Every</span><br />
-            Capsule
+            The Power <span className="light-text">of</span> Nature <span className="light-text">in Every</span> Capsule
             <span className="hero-badge-check">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="20 6 9 17 4 12" />
@@ -58,7 +57,7 @@ export default function Hero() {
             </motion.a>
 
             <p>
-              Discover our new plant-<br />based supplements for daily<br />balance and clean energy.
+              Discover our new plant-based supplements for daily balance and clean energy.
             </p>
           </div>
         </motion.div>

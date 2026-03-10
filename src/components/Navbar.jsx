@@ -2,18 +2,22 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useCart } from '@/context/CartContext';
+import Link from 'next/link';
 
 export default function Navbar() {
+  const { cartCount, setIsCartOpen } = useCart();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   const links = [
-    { label: 'Products', href: '#products' },
-    { label: 'Why Amravan', href: '#benefits' },
-    { label: 'Reviews', href: '#testimonials' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Products', href: '/#products' },
+    { label: 'Why Amravan', href: '/#benefits' },
+    { label: 'Reviews', href: '/#testimonials' },
+    { label: 'Contact', href: '/#contact' },
   ];
 
   // Scroll detection logic
@@ -60,11 +64,11 @@ export default function Navbar() {
       id="navbar"
     >
       <div className="container navbar-inner">
-        <a href="/" className="navbar-logo">Amravan</a>
+        <Link href="/" className="navbar-logo">Amravan</Link>
 
         <div className="navbar-links">
           {links.map((link) => (
-            <a key={link.label} href={link.href}>{link.label}</a>
+            <Link key={link.label} href={link.href}>{link.label}</Link>
           ))}
         </div>
 
@@ -75,12 +79,17 @@ export default function Navbar() {
               <path d="m21 21-4.35-4.35" />
             </svg>
           </button>
-          <button className="navbar-icon" aria-label="Cart">
+          <button className="navbar-icon" aria-label="Cart" onClick={() => setIsCartOpen(true)} style={{ position: 'relative' }}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
               <path d="M3 6h18" />
               <path d="M16 10a4 4 0 0 1-8 0" />
             </svg>
+            {cartCount > 0 && (
+              <span style={{ position: 'absolute', top: 0, right: 0, background: '#8baf62', color: '#fff', fontSize: '10px', fontWeight: 'bold', width: '16px', height: '16px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                {cartCount}
+              </span>
+            )}
           </button>
           <button 
             className="navbar-icon menu-toggle" 
@@ -125,14 +134,14 @@ export default function Navbar() {
               </div>
               <div className="menu-body">
                 {links.map((link) => (
-                  <a 
+                  <Link 
                     key={link.label} 
                     href={link.href} 
                     className="menu-link"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
               <div className="menu-footer">
